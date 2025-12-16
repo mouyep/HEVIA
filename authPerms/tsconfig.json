@@ -1,0 +1,97 @@
+{
+  "compilerOptions": {
+    /* Langage et Environnement */
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "module": "commonjs",
+
+    //types
+    "types": ["vitest/globals"],
+    
+    /* Émission de fichiers */
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    
+    /* Répertoires et Modules */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@routes/*": ["src/routes/*"],
+      "@types/*": ["src/types/*"],
+      "@database/*": ["src/database/*"],
+      "@test/*": ["test/*"],
+      "@testUtils/*": ["test/utils/*"],
+      "@testFixtures/*": ["test/fixtures/*"],
+      
+    },
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    
+    /* Vérification de type */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    
+    /* Caractéristiques supplémentaires */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    
+    /* Décorateurs et Métadonnées */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    
+    /* Compatibilité */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Performances */
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+  },
+  
+  /* Inclusion et Exclusion de fichiers */
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    ".env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/__mocks__/*"
+  ],
+  
+  /* Configuration pour les tests */
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  authperms:
+    build: .
+    container_name: authperms-microservice
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=authperms_db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres123
+      - DB_SCHEMA=authperms
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - EXTERNAL_API_URL=http://host.docker.internal:3005/api
+      - WAIT_FOR_DB=true
+      - RUN_MIGRATIONS=true
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - hevia-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: authperms-postgres
+    environment:
+      - POSTGRES_DB=authperms_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+    networks:
+      - hevia-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: authperms-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hevia-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: authperms-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@hevia.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - hevia-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  hevia-network:
+    driver: bridge

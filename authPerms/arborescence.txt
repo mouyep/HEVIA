@@ -1,0 +1,75 @@
+microservices/authperms/
+├── src/
+│   ├── controllers/
+│   │   ├── auth.controller.ts
+│   │   ├── user.controller.ts
+│   │   └── permission.controller.ts
+│   ├── services/
+│   │   ├── auth.service.ts
+│   │   ├── jwt.service.ts
+│   │   ├── permission.service.ts
+│   │   ├── user.service.ts
+│   │   ├── audit.service.ts
+│   │   └── external-api.service.ts
+│   ├── middleware/
+│   │   ├── auth.middleware.ts
+│   │   ├── permission.middleware.ts
+│   │   ├── rate-limiter.middleware.ts
+│   │   └── error.middleware.ts
+│   ├── repositories/
+│   │   ├── user.repository.ts
+│   │   ├── permission.repository.ts
+│   │   ├── user-permission.repository.ts
+│   │   └── token.repository.ts
+│   ├── models/
+│   │   ├── User.ts
+│   │   ├── Permission.ts
+│   │   ├── UserPermission.ts
+│   │   └── Token.ts
+│   ├── routes/
+│   │   ├── auth.routes.ts
+│   │   ├── user.routes.ts
+│   │   └── permission.routes.ts
+│   ├── utils/
+│   │   ├── validators.ts
+│   │   ├── crypto.ts
+│   │   ├── errors.ts
+│   │   ├── response.ts
+│   │   ├── logger.ts
+│   │   └── validation-schemas.ts
+│   ├── config/
+│   │   ├── database.ts
+│   │   ├── redis.ts
+│   │   ├── constants.ts
+│   │   └── app.config.ts
+│   ├── types/
+│   │   ├── index.ts
+│   │   └── jwt.types.ts
+│   ├── database/
+│   │   └── connection.ts
+│   └── app.ts
+├── scripts/
+│   ├── init-db.sql
+│   └── seed-data.sql
+├── test/
+│   ├── unit/
+│   │   ├── auth.service.test.ts
+│   │   ├── jwt.service.test.ts
+│   │   └── permission.service.test.ts
+│   ├── integration/
+│   │   ├── auth.routes.test.ts
+│   │   └── user.routes.test.ts
+│   └── fixtures/
+│       ├── users.fixture.ts
+│       └── permissions.fixture.ts
+├── migrations/
+│   ├── 001_create_auth_tables.sql
+│   └── 002_seed_initial_data.sql
+├── .env.example
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── Dockerfile
+├── Dockerfile.dev
+├── docker-compose.yml
+└── README.md
